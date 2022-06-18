@@ -9,4 +9,4 @@ clean:
 	rm *.o
 
 main: main.o
-	$(CC) -o ../out/main main.o
+	$(CC) -o ../bin/main main.o

@@ -7,9 +7,9 @@
 
 #include <iostream>
 
-// typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> MatrixXi;
+typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> MatrixXdR;
 
-Eigen::MatrixXd read_csv(const std::string& path) {
+MatrixXdR read_csv(const std::string& path) { // Output matrix needs to be RowMajor
 	std::cerr << "Importing from csv: " << path << std::endl;
 	std::ifstream indata;
 	indata.open(path);
@@ -24,7 +24,16 @@ Eigen::MatrixXd read_csv(const std::string& path) {
 		}
 		++rows;
 	}
-	return Eigen::Map<Eigen::MatrixXd>(values.data(), rows, values.size()/rows);
+	//int i = 0;
+	//for (auto j: values) {
+		//if (i%785==0)
+			//if(j>0)
+		//std::cout << j << ' ';
+		//if (i>100*785)
+			//break;
+		//++i;
+	//}
+	return Eigen::Map<MatrixXdR>(values.data(), rows, values.size()/rows);
 }
 
 template<typename M>
